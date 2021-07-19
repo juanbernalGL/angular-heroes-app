@@ -1,0 +1,38 @@
+<div
+    fxLayout="column">
+    <div>
+        <h1>Hero Search</h1>
+        <mat-divider></mat-divider>
+    </div>
+    <div fxLayout="column">
+        <h3>
+            Search
+        </h3>
+        {{term}}
+        <mat-form-field appearance="fill">
+            <mat-label>Write your superhero</mat-label>
+            <input type="text"
+                   placeholder="Pick one"
+                   aria-label="Write your superhero"
+                   matInput     
+                   [(ngModel)]="term"
+                   (input)="searching()"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption 
+            #auto="matAutocomplete"
+            (optionSelected)="selectedOption($event)">
+              <mat-option *ngFor="let hero of heroes" [value]="hero">
+                {{hero.superhero}}
+              </mat-option>
+              <mat-option value="" *ngIf="!heroes.length && term.trim().length">
+                  Didn`t found selected text {{term}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+    </div>
+    <div>
+        <pre>
+            {{selectedHero | json}}
+        </pre>
+    </div>
+</div>
