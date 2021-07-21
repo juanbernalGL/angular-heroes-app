@@ -1,0 +1,16 @@
+<h1>Are you Sure?</h1>
+<hr>
+<p>
+    Are you sure to delete {{data.superhero}}
+    <br>
+    Do you want to continue?
+</p>
+
+<div fxLayout="row">
+    <button mat-button (click)="delete()" color="error">
+        Yes, erase!
+    </button>
+    <button mat-button (click)="close()" color="warm">
+        Cancel
+    </button>
+</div>
