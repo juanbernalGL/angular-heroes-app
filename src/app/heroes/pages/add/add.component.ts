@@ -74,7 +74,7 @@ export class AddComponent implements OnInit {
         console.log(`result`, result)
         if(result){
           this.heroesService.deleteHero(this.hero.id!).subscribe((hero) => {
-            console.log(`Create resp`, hero);
+            console.log(`Delete resp`, hero);
             this.showSnackbar('Hero Deleted');
             this.router.navigate(['/heroes/']);
           });

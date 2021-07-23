@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Auth } from '../../../auth/interfaces/auth.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +15,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private activatedRoute :ActivatedRoute) { }
+  get auth(): Auth {
+    return this.authService.auth;
+  }
+
+  constructor(private activatedRoute :ActivatedRoute, 
+    private router:Router,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe( (resp ) => console.log(`id`, resp));
   }
 
+
+  logout(){
+    // go to backend and log user
+    // navigate to hero
+    this.router.navigate(['./auth']);
+  }
 }
